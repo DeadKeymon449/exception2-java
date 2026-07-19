@@ -1,5 +1,7 @@
 package exceptionProblem2GitHub.entities;
 
+import exceptionProblem2GitHub.exceptions.DomainException;
+
 public class Account {
 
 	private Integer number;
@@ -35,21 +37,21 @@ public class Account {
 	}
 
 	public void withdraw(double amount) {
+
 		if (amount > getWithdrawLimit()) {
-			System.out.println("Withdraw error: The amount exceeds withdraw limit.");
-		} else {
-			if (amount > getBalance()) {
-				System.out.println("Withdraw error: Not enough balance.");
-			} else {
-				balance -= amount;
-				System.out.println(this);
-			}
+			throw new DomainException("The amount exceeds withdraw limit.");
 		}
+
+		if (amount > getBalance()) {
+			throw new DomainException("Not enough balance.");
+		}
+
+		balance -= amount;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "New balance: " + String.format("%.2f", balance);
-//	}
+	@Override
+	public String toString() {
+		return "New balance: " + String.format("%.2f", balance);
+	}
 
 }
