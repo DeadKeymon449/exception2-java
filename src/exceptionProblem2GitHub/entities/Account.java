@@ -35,12 +35,21 @@ public class Account {
 	}
 
 	public void withdraw(double amount) {
-		balance -= amount;
+		if (amount > getWithdrawLimit()) {
+			System.out.println("Withdraw error: The amount exceeds withdraw limit.");
+		} else {
+			if (amount > getBalance()) {
+				System.out.println("Withdraw error: Not enough balance.");
+			} else {
+				balance -= amount;
+				System.out.println(this);
+			}
+		}
 	}
 
-	@Override
-	public String toString() {
-		return "New balance: " + String.format("%.2f", balance);
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "New balance: " + String.format("%.2f", balance);
+//	}
+
 }
