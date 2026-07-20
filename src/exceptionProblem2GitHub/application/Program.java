@@ -38,7 +38,7 @@ public class Program {
 		} catch (InputMismatchException e) {
 			System.out.println("Invalid digit.");
 		} catch (DomainException e) {
-			System.out.println("Withdraw error: " + e.getMessage());
+			System.out.println(e.getMessage());
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error.");
 		} finally {			
